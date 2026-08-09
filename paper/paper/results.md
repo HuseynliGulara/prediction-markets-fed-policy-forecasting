@@ -31,3 +31,21 @@ For the VIX, the coefficient is 0.03155 with a p value of 0.544, indicating no s
 The results suggest that FOMC statement language contains information associated with Treasury market movements beyond the contemporaneous change in the Federal Funds Rate. The association is statistically significant for both the 2 year and 10 year Treasury yields, while no statistically significant relationship is detected for the VIX.
 
 The negative coefficient estimates should be interpreted cautiously because the communication measure is based on a dictionary approach and the sample contains only 40 FOMC announcements.
+
+## Influence Robustness
+
+An influence analysis based on Cook's distance identifies three observations with relatively high influence: the FOMC announcements of March 22, 2023, December 13, 2023, and March 16, 2022.
+
+These observations are retained in the main specification because they represent genuine monetary policy events rather than data errors.
+
+As a robustness check, the three observations are excluded and the 2 Year Treasury regression is re estimated using heteroskedasticity robust standard errors. The coefficient on unexpected communication remains negative at −0.00563 with a p value of 0.029, compared with −0.00784 and a p value of 0.030 in the full sample.
+
+The persistence of the coefficient and statistical significance suggests that the main 2 Year Treasury result is not driven entirely by the most influential observations.
+
+## 10 Year Treasury Influence Robustness
+
+The same influence robustness test is applied to the 10 Year Treasury yield.
+
+After excluding the three observations with the highest Cook's distance, the coefficient on unexpected communication remains negative at −0.00568 with a p value of 0.044. The coefficient is smaller than in the full sample, but statistical significance remains at the 5 percent level.
+
+Taken together, the influence analysis suggests that the negative association between unexpected FOMC communication and Treasury yields is not driven entirely by a small number of influential observations.
