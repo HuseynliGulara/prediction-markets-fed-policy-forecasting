@@ -84,6 +84,12 @@ Higher values indicate a greater relative presence of hawkish language.
 
 The resulting measure varies across FOMC announcements and provides a quantitative measure of communication tone.
 
+### Figure 1. Distribution of FOMC Hawkishness
+
+![Distribution of FOMC Hawkishness](../figures/hawkishness_distribution.png)
+
+The distribution shows the variation in the estimated hawkishness of FOMC statements across the sample.
+
 ## 5. Unexpected FOMC Communication
 
 The main empirical challenge is distinguishing communication from the contemporaneous monetary policy decision.
@@ -189,6 +195,24 @@ The Treasury results indicate a statistically significant association between un
 
 The VIX result does not provide statistically significant evidence of an association between unexpected communication and market volatility.
 
+### Figure 2. 2 Year Treasury Yield Reaction
+
+![2 Year Treasury Yield Reaction](../figures/fomc_tone_2y_reaction.png)
+
+The figure shows the relationship between unexpected FOMC communication and the 2 Year Treasury yield reaction around FOMC announcements.
+
+### Figure 3. 10 Year Treasury Yield Reaction
+
+![10 Year Treasury Yield Reaction](../figures/fomc_tone_10y_reaction.png)
+
+The figure shows the relationship between unexpected FOMC communication and the 10 Year Treasury yield reaction around FOMC announcements.
+
+### Figure 4. VIX Reaction
+
+![VIX Reaction](../figures/fomc_tone_vix_reaction.png)
+
+The figure shows the relationship between unexpected FOMC communication and changes in the VIX around FOMC announcements.
+
 ## 9. Two Day Event Window Results
 
 The two trading day event window produces similar negative coefficient estimates for both Treasury yields.
@@ -233,25 +257,18 @@ For the 10 Year Treasury yield, the corresponding coefficient is −0.00249 with
 
 The two day 2 Year Treasury result therefore remains statistically significant after excluding influential observations, while the two day 10 Year Treasury result becomes statistically insignificant.
 
-## 12. Summary of Empirical Evidence
+## 12. Robustness Summary
 
-The empirical evidence can be summarized across the different specifications.
-
-The main announcement day specification produces statistically significant negative coefficients for both Treasury maturities.
-
-The 2 Year Treasury coefficient is −0.00784 with a p value of 0.030.
-
-The 10 Year Treasury coefficient is −0.00679 with a p value of 0.016.
-
-The two day specification produces coefficients of −0.00684 for the 2 Year Treasury yield and −0.00636 for the 10 Year Treasury yield.
-
-After influential observations are excluded, the one day coefficients remain negative and statistically significant for both Treasury maturities.
-
-The two day 2 Year Treasury result also remains statistically significant, while the corresponding 10 Year Treasury estimate does not.
-
-The VIX specification does not produce statistically significant evidence of a relationship with unexpected FOMC communication.
-
-Taken together, the strongest evidence is concentrated in Treasury yields and particularly in the announcement day response.
+| Outcome | Window | Coefficient | P value | R squared | N |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 2Y Treasury | 1 day | −0.00784 | 0.030 | 0.128 | 39 |
+| 10Y Treasury | 1 day | −0.00679 | 0.016 | 0.141 | 39 |
+| 2Y Treasury | 2 day | −0.00684 | 0.057 | 0.081 | 39 |
+| 10Y Treasury | 2 day | −0.00636 | 0.043 | 0.093 | 39 |
+| 2Y Treasury | 1 day, influence robust | −0.00563 | 0.029 | 0.082 | 36 |
+| 10Y Treasury | 1 day, influence robust | −0.00568 | 0.044 | 0.099 | 36 |
+| 2Y Treasury | 2 day, influence robust | −0.00681 | 0.026 | 0.120 | 36 |
+| 10Y Treasury | 2 day, influence robust | −0.00249 | 0.335 | 0.020 | 36 |
 
 ## 13. Interpretation
 
