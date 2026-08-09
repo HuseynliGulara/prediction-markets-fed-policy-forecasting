@@ -32,6 +32,18 @@ For the VIX, the coefficient is 0.03155 with a p value of 0.544, indicating no s
 
 The Treasury results suggest that unexpected variation in FOMC communication is associated with movements in both short and longer maturity Treasury yields, while the evidence for market volatility is weak.
 
+## Table 1. Main Regression Results
+
+The table reports OLS estimates of the relationship between unexpected FOMC communication and financial market reactions around FOMC announcements. Heteroskedasticity robust HC1 standard errors are used.
+
+| Dependent Variable | Unexpected Tone | P value | R squared | Observations |
+|---|---:|---:|---:|---:|
+| 2Y Event Reaction | −0.00784 | 0.030 | 0.128 | 39 |
+| 10Y Event Reaction | −0.00679 | 0.016 | 0.141 | 39 |
+| VIX Event Reaction | 0.03155 | 0.544 | 0.008 | 39 |
+
+**Notes:** The dependent variables measure the change in the corresponding market variable between the last trading day before the FOMC announcement and the first trading day after the announcement. Unexpected Tone is the residual component of hawkishness after controlling for the contemporaneous Federal Funds Rate change. Standard errors are heteroskedasticity robust using the HC1 covariance estimator.
+
 ## Two Day Event Window
 
 The two trading day event window produces similar coefficient estimates.
@@ -42,21 +54,41 @@ For the 10 Year Treasury yield, the coefficient is −0.00636 with a p value of 
 
 These results suggest that the negative association remains present over a slightly longer event window, although the statistical evidence is weaker for the 2 Year Treasury yield.
 
+## Table 2. Two Day Event Window Results
+
+The table reports regression estimates using a two trading day event window.
+
+| Dependent Variable | Unexpected Tone | P value | R squared | Observations |
+|---|---:|---:|---:|---:|
+| 2Y 2 Day Reaction | −0.00684 | 0.057 | 0.081 | 39 |
+| 10Y 2 Day Reaction | −0.00636 | 0.043 | 0.093 | 39 |
+
+**Notes:** The two day event window measures the change between the last trading day before the FOMC announcement and the second trading day after the announcement. Standard errors are heteroskedasticity robust using the HC1 covariance estimator.
+
 ## Influence Robustness
 
 An influence analysis based on Cook's distance is used to identify observations that have relatively high influence on the regression estimates.
 
 For the one day 2 Year Treasury specification, the three observations with the highest Cook's distance are March 16, 2022, March 22, 2023, and December 13, 2023.
 
+For the one day 10 Year Treasury specification, the three observations with the highest Cook's distance are November 1, 2023, December 13, 2023, and July 31, 2024.
+
 These observations are retained in the main specification because they represent genuine monetary policy events rather than data errors.
 
-As a robustness check, these three observations are excluded and the regression is re estimated using heteroskedasticity robust HC1 standard errors.
+As a robustness check, the three observations with the highest Cook's distance are excluded from each specification and the regressions are re estimated using heteroskedasticity robust HC1 standard errors.
 
-For the 2 Year Treasury yield, the coefficient remains negative at −0.00563 with a p value of 0.029 and an R squared of 0.082.
+## Table 3. Influence Robustness Results
 
-For the 10 Year Treasury yield, the coefficient remains negative at −0.00568 with a p value of 0.044 and an R squared of 0.099.
+The table reports regression estimates after excluding the three observations with the highest Cook's distance for each specification.
 
-The persistence of the negative coefficient and statistical significance suggests that the main one day Treasury results are not driven entirely by the most influential observations.
+| Dependent Variable | Window | Unexpected Tone | P value | R squared | Observations |
+|---|---|---:|---:|---:|---:|
+| 2Y Treasury | 1 day | −0.00563 | 0.029 | 0.082 | 36 |
+| 10Y Treasury | 1 day | −0.00568 | 0.044 | 0.099 | 36 |
+| 2Y Treasury | 2 day | −0.00681 | 0.026 | 0.120 | 36 |
+| 10Y Treasury | 2 day | −0.00249 | 0.335 | 0.020 | 36 |
+
+**Notes:** The three observations with the highest Cook's distance are excluded separately for each specification. Standard errors are heteroskedasticity robust using the HC1 covariance estimator.
 
 ## Two Day Influence Robustness
 
