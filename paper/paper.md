@@ -45,7 +45,7 @@ The market variables are:
 3. VIX index
 4. Federal Funds Rate
 
-The FOMC announcement dates are matched with the corresponding market observations.
+The FOMC announcement dates are matched with the corresponding market observations. After merging the statement data with market data and constructing the event window variables, the main regression specifications contain 39 observations.
 
 For each announcement, the market reaction is calculated relative to the FOMC announcement date.
 
@@ -126,7 +126,7 @@ For the main specification, the event reaction is calculated as:
 $$
 Reaction_i =
 MarketValue_{after,i}
--
+−
 MarketValue_{before,i}
 $$
 
@@ -260,7 +260,7 @@ The two day 2 Year Treasury result therefore remains statistically significant a
 ## 12. Robustness Summary
 
 | Outcome | Window | Coefficient | P value | R squared | N |
-| --- | --- | ---: | ---: | ---: | ---: |
+| --- | --- | --- | --- | --- | --- |
 | 2Y Treasury | 1 day | −0.00784 | 0.030 | 0.128 | 39 |
 | 10Y Treasury | 1 day | −0.00679 | 0.016 | 0.141 | 39 |
 | 2Y Treasury | 2 day | −0.00684 | 0.057 | 0.081 | 39 |
@@ -313,3 +313,21 @@ No statistically significant relationship is detected between unexpected FOMC co
 Overall, the results are consistent with FOMC statement language containing information associated with Treasury market movements beyond the contemporaneous policy rate change. The evidence is strongest for Treasury yields around the announcement date and for the 2 Year Treasury yield.
 
 The findings should be interpreted cautiously given the small sample size, the dictionary based communication measure, and the observational nature of the analysis.
+
+## 16. References
+
+Federal Reserve Board. Federal Open Market Committee statements. Board of Governors of the Federal Reserve System.
+
+Federal Reserve Bank of St. Louis. Federal Funds Effective Rate, DFF. FRED database.
+
+Federal Reserve Bank of St. Louis. 2 Year Treasury Constant Maturity Rate, DGS2. FRED database.
+
+Federal Reserve Bank of St. Louis. 10 Year Treasury Constant Maturity Rate, DGS10. FRED database.
+
+Federal Reserve Bank of St. Louis. CBOE Volatility Index, VIXCLS. FRED database.
+
+## 17. Reproducibility
+
+All analysis is implemented in Python and documented in the notebooks included in this repository. The repository contains the processed data, analysis notebooks, source code, generated figures, methodology, empirical results, and this research paper.
+
+The main analysis can be reproduced by running the notebooks in sequence, beginning with `01_data_exploration.ipynb` and followed by `02_market_data.ipynb`.
