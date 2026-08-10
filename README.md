@@ -1,109 +1,128 @@
-# Fed Language and Financial Markets
+# FOMC Communication and Financial Markets
 
 ## Research Question
 
-Does the tone of FOMC statements predict movements in Treasury yields and market volatility?
+Does the tone of FOMC statements contain information associated with subsequent movements in Treasury yields and market volatility?
 
 ## Overview
 
 This empirical research project examines whether the language used in Federal Open Market Committee (FOMC) statements contains information about financial market reactions around monetary policy announcements.
 
-The analysis combines natural language processing with event study methods and regression analysis to study the relationship between unexpected FOMC communication and movements in Treasury yields and market volatility.
-
-## Data
+The analysis combines natural language processing, event study methods, and regression analysis to examine the relationship between unexpected FOMC communication and movements in Treasury yields and market volatility.
 
 The sample contains 40 FOMC statements from January 2021 through December 2024.
 
-Market data are obtained from the Federal Reserve Bank of St. Louis FRED database and include:
+## Data
 
-* 2 Year Treasury yield
-* 10 Year Treasury yield
-* VIX index
-* Federal Funds Rate
+The analysis combines FOMC statement data with financial market data from the Federal Reserve Bank of St. Louis FRED database.
 
-For each FOMC announcement, market reactions are measured using both one trading day and two trading day event windows.
+The market variables include:
+
+1. 2 Year Treasury yield
+2. 10 Year Treasury yield
+3. VIX index
+4. Federal Funds Rate
+
+For each FOMC announcement, market reactions are measured using one trading day and two trading day event windows.
 
 ## Methodology
 
 ### 1. FOMC Statement Processing
 
-FOMC statements are cleaned and processed to remove non statement content.
+FOMC statements are cleaned and processed using Python. Non statement content is removed before constructing the communication measure.
 
-### 2. Communication Measure
+### 2. Hawkishness Measure
 
-A dictionary based measure is used to classify hawkish and dovish language.
+A dictionary based hawkishness score is constructed using hawkish and dovish terms in each FOMC statement.
 
-The hawkishness score is calculated as the difference between hawkish and dovish word counts, normalized by the total number of words and scaled by 1,000.
+The score is normalized by total statement length.
 
 ### 3. Unexpected Communication
 
-Hawkishness is regressed on the contemporaneous change in the Federal Funds Rate.
+To separate communication from the contemporaneous monetary policy decision, hawkishness is regressed on the change in the Federal Funds Rate.
 
-The residual from this regression is used as the unexpected communication measure.
-
-This separates the communication component from the contemporaneous policy rate movement.
+The residual from this regression is interpreted as unexpected FOMC communication.
 
 ### 4. Event Study
 
-Market reactions are measured as changes between the last trading day before an FOMC announcement and the first trading day after the announcement.
+Market reactions are calculated around FOMC announcement dates.
 
-Both one day and two day event windows are examined.
+The main event window compares the last trading day before the announcement with the first trading day after the announcement.
+
+A two trading day window is also examined as a robustness specification.
 
 ### 5. Regression Analysis
 
 The main specification estimates the relationship between unexpected FOMC communication and market reactions:
 
-$$
-Reaction_i =
-\alpha +
-\beta UnexpectedTone_i +
-\epsilon_i
-$$
+Reaction = α + β UnexpectedTone + ε
 
-Heteroskedasticity robust HC1 standard errors are used.
+All main regression specifications use heteroskedasticity robust HC1 standard errors.
 
-### 6. Influence Analysis
+## Main Results
 
-Cook's distance is used to identify observations with relatively high influence on the regression estimates.
+The results show a statistically significant negative association between unexpected FOMC communication and Treasury yield reactions during the announcement day window.
 
-Robustness specifications exclude the three observations with the highest Cook's distance.
+### 2 Year Treasury Yield
 
-## Main Findings
+Coefficient: −0.00784
 
-The main one day event window results show a negative and statistically significant association between unexpected FOMC communication and Treasury yields.
+P value: 0.030
 
-| Outcome | Coefficient | P value | R squared | N |
-|---|---:|---:|---:|---:|
-| 2Y Treasury | −0.00784 | 0.030 | 0.128 | 39 |
-| 10Y Treasury | −0.00679 | 0.016 | 0.141 | 39 |
-| VIX | 0.03155 | 0.544 | 0.008 | 39 |
+R squared: 0.128
 
-The results indicate that unexpected FOMC communication is associated with Treasury yield movements, while no statistically significant relationship is detected for the VIX.
+Observations: 39
 
-The two day event window produces similar negative coefficients for both Treasury yields. The 2 Year coefficient is −0.00684 with a p value of 0.057, while the 10 Year coefficient is −0.00636 with a p value of 0.043.
+### 10 Year Treasury Yield
+
+Coefficient: −0.00679
+
+P value: 0.016
+
+R squared: 0.141
+
+Observations: 39
+
+### VIX
+
+Coefficient: 0.03155
+
+P value: 0.544
+
+R squared: 0.008
+
+The VIX result is not statistically significant.
 
 ## Robustness
 
-The influence analysis supports the main one day Treasury results.
+The analysis includes:
 
-After excluding the three observations with the highest Cook's distance:
+1. Two trading day event windows
+2. Cook's distance influence analysis
+3. Influence robust specifications
+4. Heteroskedasticity robust standard errors
 
-| Outcome | Coefficient | P value | R squared | N |
-|---|---:|---:|---:|---:|
-| 2Y Treasury | −0.00563 | 0.029 | 0.082 | 36 |
-| 10Y Treasury | −0.00568 | 0.044 | 0.099 | 36 |
+The negative relationship remains statistically significant for the one day Treasury specifications after influential observations are excluded.
 
-For the two day window, the 2 Year result remains statistically significant after excluding influential observations, while the 10 Year result becomes statistically insignificant.
+The two day analysis provides additional evidence for the 2 Year Treasury yield, while the evidence for the 10 Year Treasury yield becomes weaker after influential observations are excluded.
 
-These results suggest that the main announcement day findings are not driven entirely by a small number of influential observations.
+## Figures
 
-## Interpretation
+### FOMC Hawkishness Distribution
 
-The findings are consistent with FOMC statement language containing information associated with Treasury market movements beyond the contemporaneous Federal Funds Rate change.
+![Hawkishness Distribution](figures/hawkishness_distribution.png)
 
-The strongest evidence is concentrated in the announcement day response and in the 2 Year Treasury yield.
+### 2 Year Treasury Yield Reaction
 
-The analysis identifies statistical associations rather than causal effects. The relatively small sample and dictionary based communication measure also motivate cautious interpretation.
+![2 Year Treasury Yield Reaction](figures/fomc_tone_2y_reaction.png)
+
+### 10 Year Treasury Yield Reaction
+
+![10 Year Treasury Yield Reaction](figures/fomc_tone_10y_reaction.png)
+
+### VIX Reaction
+
+![VIX Reaction](figures/fomc_tone_vix_reaction.png)
 
 ## Repository Structure
 
@@ -118,21 +137,22 @@ prediction-markets-fed-policy-forecasting/
 │   ├── market_data_clean.csv
 │   └── regression_results.csv
 │
+├── figures/
+│   ├── hawkishness_distribution.png
+│   ├── fomc_tone_2y_reaction.png
+│   ├── fomc_tone_10y_reaction.png
+│   └── fomc_tone_vix_reaction.png
+│
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb
 │   └── 02_market_data.ipynb
 │
-├── src/
-│   └── text_features.py
-│
-├── figures/
-│   ├── fomc_tone_2y_reaction.png
-│   ├── fomc_tone_10y_reaction.png
-│   ├── fomc_tone_vix_reaction.png
-│   └── hawkishness_distribution.png
-│
 ├── paper/
 │   ├── methodology.md
+│   ├── paper.md
 │   └── results.md
+│
+├── src/
+│   └── text_features.py
 │
 └── README.md
