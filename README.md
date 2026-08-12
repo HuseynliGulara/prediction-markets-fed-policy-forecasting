@@ -6,9 +6,9 @@ Does the tone of FOMC statements contain information associated with subsequent 
 
 ## Overview
 
-This empirical research project examines whether the language used in Federal Open Market Committee (FOMC) statements contains information about financial market reactions around monetary policy announcements.
+This empirical research project examines if the language used in Federal Open Market Committee (FOMC) statements contains information about financial market reactions around monetary policy announcements.
 
-The analysis combines natural language processing, event study methods, and regression analysis to examine the relationship between unexpected FOMC communication and movements in Treasury yields and market volatility.
+The analysis combines natural language processing, event study methods and regression analysis to examine the relationship between unexpected FOMC communication and movements in Treasury yields and market volatility.
 
 The sample contains 40 FOMC statements from January 2021 through December 2024.
 
